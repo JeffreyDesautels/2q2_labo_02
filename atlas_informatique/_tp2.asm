@@ -177,7 +177,7 @@ for_file:
           CALL fill_buffers            ;          if (donnees == buffer) { // suite dans PROC fill_buffers }
           CALL display_product         ;          display_product(produit);
                                        
-          JMP  fin
+          JMP  end_FS
                     
 not_found:
 next_char: 
