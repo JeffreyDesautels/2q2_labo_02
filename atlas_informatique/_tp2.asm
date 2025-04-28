@@ -74,6 +74,8 @@ while_main:
           
           CALL input_number            ; input_number(buffer);
           CALL file_search             ; file_search(buffer);
+          
+          JMP  while_main
                                   
 end_while_main:
 
@@ -153,6 +155,14 @@ file_search      PROC                  ; void file_search(string& buffer) {
           CALL enter                   ;     // cout << endl << endl;
            
 while_file:                            ;     while (getline(fichier, donnees, ',')) {
+
+          MOV AH, 42h
+          MOV AL, 00h     ; Depuis la fin
+          MOV CX, 0000h
+          MOV DX, 0000h   ; Pas de déplacement
+          MOV BX, file_handle
+          INT 21h
+          
           MOV  AH, 3Fh
           MOV  BX, file_handle
           MOV  CX, 6
